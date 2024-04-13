@@ -55,7 +55,7 @@ public class fragment_RegisterStepOne extends Fragment {
 
     public void OnClickNext(View view)
     {
-        boolean isValid = true; // validtionInput();
+        boolean isValid =  validtionInput();
         HashMap<String , Object> newUser =  ((MainActivityMain)getActivity()).GetUserProperty();
         if (!isValid)
         {
