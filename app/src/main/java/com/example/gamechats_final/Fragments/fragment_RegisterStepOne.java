@@ -62,21 +62,20 @@ public class fragment_RegisterStepOne extends Fragment {
             Toast.makeText(getActivity(), "Invalid credentials", Toast.LENGTH_SHORT).show();
         }
         else {
-          //  newUser.putString("FirstName", m_UserFirstname.getText().toString().trim());
-        //    newUser.putString("LastName", m_UserLastname.getText().toString().trim())
-            //    newUser.putString("NickName", m_UserNickName.getText().toString().trim());
-        //    newUser.putString("Phone", m_UserPhone.getText().toString().trim());
-        //    newUser.putString("BirthDate", m_UserBirthDate.getText().toString().trim());
-        //    newUser.putString("Email", m_UserEmail.getText().toString().trim());
-        //    newUser.putString("Password", m_UserPassword.getText().toString().trim());
-            Timestamp date =  Timestamp.now();
-            newUser.put("FirstName", "ido");
-            newUser.put("LastName", "Yossi");
-            newUser.put("NickName", "Yossi");
-            newUser.put("Phone", "0508422256");
-            newUser.put("BirthDate", Timestamp.now());
-            newUser.put("Email", "wa@n-k.org.il");
-            newUser.put("Password", "12345678");
+            newUser.put("FirstName", m_UserFirstname.getText().toString().trim());
+            newUser.put("LastName", m_UserLastname.getText().toString().trim());
+            newUser.put("NickName", m_UserNickName.getText().toString().trim());
+            newUser.put("Phone", m_UserPhone.getText().toString().trim());
+            newUser.put("BirthDate", m_UserBirthDate.getText().toString().trim());
+            newUser.put("Email", m_UserEmail.getText().toString().trim());
+            newUser.put("Password", m_UserPassword.getText().toString().trim());
+           //  newUser.put("FirstName", "ido");
+          //  newUser.put("LastName", "Yossi");
+        ///    newUser.put("NickName", "Yossi");
+        //    newUser.put("Phone", "0508422256");
+        //    newUser.put("BirthDate", Timestamp.now());
+        //    newUser.put("Email", "wa@n-k.org.il");
+        //    newUser.put("Password", "12345678");
             Navigation.findNavController(view).navigate(R.id.action_fragment_RegisterStepOne_to_fragment_RegisterStepTwo);
         }
     }

@@ -67,8 +67,10 @@ public class fragment_login extends Fragment {
         //Example: userMail = "nir@gmail.com" , password = "12345678"
         boolean isValid= true; //validationInput();
         if(isValid) {
-                    String userMail = "nir@gmail.com";
-                    String password = "123456789";
+                    //String userMail = "nir@gmail.com";
+                    //String password = "123456789";
+                    String userMail = m_Mail.getText().toString().trim();
+                    String password = m_Password.getText().toString().trim();
                     m_Auth.signInWithEmailAndPassword(userMail, password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
