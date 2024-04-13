@@ -32,9 +32,9 @@ public class fragment_UserMember extends Fragment {
     private static ArrayList<User> m_UserMember;
     private static ArrayList<User> m_UserMemberDataSearch;
     private RadioGroup radioGroupMenu;
-    private static RecyclerView recyclerView;
+    private  RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
-    private static CustomeAdapter_UserMembers adapter;
+    private  CustomeAdapter_UserMembers adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,7 +91,7 @@ public class fragment_UserMember extends Fragment {
         return  view;
     }
 
-    private static void initializeDataSet()
+    private void initializeDataSet()
     {
         //Bundle m_Search = fragment_search.GetSearchProperty();
         if(ChatActivity.m_Saerch != null) {
@@ -112,17 +112,17 @@ public class fragment_UserMember extends Fragment {
         }
     }
 
-    private static void setDataSetOnAdapter() {
+    private  void setDataSetOnAdapter() {
         adapter = new CustomeAdapter_UserMembers(m_UserMemberDataSearch , ChatActivity.m_UserInfo.GetFriend());
         recyclerView.setAdapter(adapter);
     }
 
-    public static void ReloadAdapter()
+   // public static void ReloadAdapter()
     {
         initializeDataSet();
     }
 
-    private static void makeSearch()
+    private void makeSearch()
     {
         if(ChatActivity.m_Saerch != null) {
             int countTags = 0;
