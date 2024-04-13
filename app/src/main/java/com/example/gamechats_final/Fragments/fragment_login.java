@@ -65,7 +65,7 @@ public class fragment_login extends Fragment {
 
     private void OnClickLogin(View view) {
         //Example: userMail = "nir@gmail.com" , password = "12345678"
-        boolean isValid= true; //validationInput();
+        boolean isValid= validationInput();
         if(isValid) {
                     //String userMail = "nir@gmail.com";
                     //String password = "123456789";
