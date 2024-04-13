@@ -99,7 +99,7 @@ public class CustomeAdapter_Chat extends RecyclerView.Adapter<CustomeAdapter_Cha
                                     Update.DeleteChat(myViewHolder.GetChat());
                                     dialog.dismiss();
                                     fragment_Chat.ReloadAdapter(idChat);
-                                    fragment_ChatForYou.ReloadAdapter();
+                                 //   fragment_ChatForYou.ReloadAdapter();
                                 }
                             });
                             dialog.getWindow().getDecorView().findViewById(R.id.buttonBuildPrivicyCancel).setOnClickListener(new View.OnClickListener() {

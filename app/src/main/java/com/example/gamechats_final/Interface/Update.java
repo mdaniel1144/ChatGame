@@ -187,13 +187,16 @@ public class Update {
     public static Task<Void> DeleteChat(Chat i_Chat)
     {
         TaskCompletionSource<Void> taskCompletionSource = new TaskCompletionSource<>();
-        // Task<Void> task_DeleteChat= m_database.collection("ChatGroup").document(i_Chat.GetID()).delete();         //This will be late the new version
-        Task<Void> task_DeleteFromUser= m_database.collection("User").document(m_Auth.getUid()).collection("ChatGroup").document(i_Chat.GetID()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-               @Override
-               public void onSuccess(Void unused) {
-                           Log.d(TAG , "The chat "+i_Chat.GetID()+" Deleted");
-                }
-        });
+                       //This will be late the new version
+        Task<Void> task_FollowerChat = m_database.collection("ChatGroup").document(i_Chat.GetID()).update("CountFollower" , i_Chat.GetFollowers()-1);
+        Task<Void> task_DeleteFromUser= m_database.collection("User").document(m_Auth.getUid()).collection("ChatGroup").document(i_Chat.GetID()).delete();
+        Tasks.whenAllComplete(task_FollowerChat , task_DeleteFromUser).addOnSuccessListener(new OnSuccessListener<List<Task<?>>>() {
+           @Override
+           public void onSuccess(List<Task<?>> tasks) {
+               Log.d(TAG , "The chat "+i_Chat.GetID()+" Deleted");
+               Log.d(TAG , "The chat was Update");
+           }
+       });
 
         return  taskCompletionSource .getTask();
     }
