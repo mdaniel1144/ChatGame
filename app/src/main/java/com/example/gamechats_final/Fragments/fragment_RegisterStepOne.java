@@ -91,6 +91,7 @@ public class fragment_RegisterStepOne extends Fragment {
     {
         boolean isValid = true;
         String RegexText = "^[a-zA-Z0-9]+";
+        String RegexTextAndSpace = "^[a-zA-Z0-9 ]+$";
         String RegexPassword = "^[a-zA-Z0-9]{8,}$";
         String RegexMail = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
         String RegexPhone = "^05[02487][0-9]{7}";
@@ -102,9 +103,9 @@ public class fragment_RegisterStepOne extends Fragment {
             isValid = false;
             m_UserLastname.setError("It must include only letters");
         }
-        if(!Pattern.matches(RegexText , m_UserNickName.getText().toString().trim())) {
+        if(!Pattern.matches(RegexTextAndSpace , m_UserNickName.getText().toString().trim())) {
             isValid = false;
-            m_UserNickName.setError("It must include only letters");
+            m_UserNickName.setError("It must include only letters and digits");
         }
         if(!Pattern.matches(RegexPhone , m_UserPhone.getText().toString().trim())) {
             isValid = false;
