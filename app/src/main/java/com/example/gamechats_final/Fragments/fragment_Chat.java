@@ -31,10 +31,10 @@ public class fragment_Chat extends Fragment {
 
     private static ArrayList<Chat> m_ChatDataSearch = new ArrayList<>();
     private static ArrayList<Chat> m_ChatData = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private LinearLayoutManager layoutManager;
+    private static RecyclerView recyclerView;
+    private  LinearLayoutManager layoutManager;
 
-    private CustomeAdapter_Chat adapter;
+    private static CustomeAdapter_Chat adapter;
 
     private Bundle m_UserProperty;
 
@@ -108,10 +108,26 @@ public class fragment_Chat extends Fragment {
         }
     }
 
-    private void setDataSetOnAdapter() {
+    private static void setDataSetOnAdapter() {
         adapter = new CustomeAdapter_Chat(m_ChatDataSearch);
         recyclerView.setAdapter(adapter);
     }
+
+    public static void ReloadAdapter(String i_IdChat) {
+
+        for(int i=0 ; i<m_ChatDataSearch.size() ; i++)
+        {
+            Chat chat = m_ChatDataSearch.get(i);
+            if(chat.GetID().equals(i_IdChat)){
+                m_ChatDataSearch.remove(i);
+                break;
+            }
+        }
+        setDataSetOnAdapter();
+    }
+
+
+
 
     @Override
     public void onDestroyView() {

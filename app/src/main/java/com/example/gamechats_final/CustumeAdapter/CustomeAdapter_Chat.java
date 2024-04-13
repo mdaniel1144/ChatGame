@@ -22,6 +22,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gamechats_final.Activities.ChatActivity;
 import com.example.gamechats_final.Activities.messageActiviy;
+import com.example.gamechats_final.Fragments.fragment_Chat;
+import com.example.gamechats_final.Fragments.fragment_ChatForYou;
 import com.example.gamechats_final.Interface.AlertDialogBuilder;
 import com.example.gamechats_final.Interface.CreateObj;
 import com.example.gamechats_final.Interface.Update;
@@ -93,9 +95,11 @@ public class CustomeAdapter_Chat extends RecyclerView.Adapter<CustomeAdapter_Cha
                                 @Override
                                 public void onClick(View v) {
                                     //Add Chat --> Chat ONLY
+                                    String idChat = myViewHolder.GetChat().GetID();
                                     Update.DeleteChat(myViewHolder.GetChat());
                                     dialog.dismiss();
-                                    Navigation.findNavController(view.getRootView()).navigate(R.id.fragment_chatgroup);
+                                    fragment_Chat.ReloadAdapter(idChat);
+                                    fragment_ChatForYou.ReloadAdapter();
                                 }
                             });
                             dialog.getWindow().getDecorView().findViewById(R.id.buttonBuildPrivicyCancel).setOnClickListener(new View.OnClickListener() {

@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gamechats_final.Activities.ChatActivity;
+import com.example.gamechats_final.Fragments.fragment_UserMember;
 import com.example.gamechats_final.Interface.AlertDialogBuilder;
 import com.example.gamechats_final.Interface.CreateObj;
 import com.example.gamechats_final.Interface.Update;
@@ -81,12 +82,14 @@ public class CustomeAdapter_UserMembers extends RecyclerView.Adapter<CustomeAdap
                     myViewHolder.imageButtonAddFriend.setTag("Remove");
                     myViewHolder.imageButtonAddFriend.setImageResource(R.drawable.ic_remove);
                     ChatActivity.SetAllFriend();
+
                 }
                 else
                 {
                     Update.RemoveUserMember(myViewHolder.GetUser());
                     myViewHolder.imageButtonAddFriend.setTag("Add");
                     myViewHolder.imageButtonAddFriend.setImageResource(R.drawable.ic_add);
+                   // fragment_UserMember.ReloadAdapter();
                 }
             }
         });

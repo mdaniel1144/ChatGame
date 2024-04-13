@@ -32,9 +32,9 @@ public class fragment_UserMember extends Fragment {
     private static ArrayList<User> m_UserMember;
     private static ArrayList<User> m_UserMemberDataSearch;
     private RadioGroup radioGroupMenu;
-    private RecyclerView recyclerView;
+    private static RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
-    private CustomeAdapter_UserMembers adapter;
+    private static CustomeAdapter_UserMembers adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,7 +91,7 @@ public class fragment_UserMember extends Fragment {
         return  view;
     }
 
-    private void initializeDataSet()
+    private static void initializeDataSet()
     {
         //Bundle m_Search = fragment_search.GetSearchProperty();
         if(ChatActivity.m_Saerch != null) {
@@ -100,7 +100,7 @@ public class fragment_UserMember extends Fragment {
         else {
             m_UserMember = new ArrayList<>();
 
-            String idCurrentUser = ((ChatActivity)getActivity()).GetUserID();
+            String idCurrentUser =ChatActivity.m_UserInfo.GetUserID();
             InitializeDataSet.GetAllUser().addOnCompleteListener(new OnCompleteListener<ArrayList<User>>() {
                 @Override
                 public void onComplete(@NonNull Task<ArrayList<User>> task) {
@@ -112,12 +112,17 @@ public class fragment_UserMember extends Fragment {
         }
     }
 
-    private void setDataSetOnAdapter() {
+    private static void setDataSetOnAdapter() {
         adapter = new CustomeAdapter_UserMembers(m_UserMemberDataSearch , ChatActivity.m_UserInfo.GetFriend());
         recyclerView.setAdapter(adapter);
     }
 
-    private void makeSearch()
+    public static void ReloadAdapter()
+    {
+        initializeDataSet();
+    }
+
+    private static void makeSearch()
     {
         if(ChatActivity.m_Saerch != null) {
             int countTags = 0;

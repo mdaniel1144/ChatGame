@@ -36,9 +36,9 @@ public class fragment_ChatForYou extends Fragment {
 
     private static ArrayList<ChatForYou> m_ChatForYouData = new ArrayList<>();
     private static ArrayList<ChatForYou> m_ChatForYouDataSearch = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private GridLayoutManager layoutManager;
-    private CustomAdapter_ChatForYou adapter;
+    private static RecyclerView recyclerView;
+    private static GridLayoutManager layoutManager;
+    private static CustomAdapter_ChatForYou adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,7 +57,7 @@ public class fragment_ChatForYou extends Fragment {
         return view;
     }
 
-    private void initializeDataSet() {
+    private static void initializeDataSet() {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -129,7 +129,7 @@ public class fragment_ChatForYou extends Fragment {
     }
 
 
-    private void AddTagsChat(ArrayList<Tag> tags , String i_ChatID)
+    private static void AddTagsChat(ArrayList<Tag> tags , String i_ChatID)
     {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("ChatGroup").document(i_ChatID).collection("Category").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -162,9 +162,14 @@ public class fragment_ChatForYou extends Fragment {
             }});
     }
 
-    private void setDataSetOnAdapter(ArrayList<ChatForYou> i_DataSet) {
+    private static void setDataSetOnAdapter(ArrayList<ChatForYou> i_DataSet) {
         adapter = new CustomAdapter_ChatForYou(i_DataSet);
         recyclerView.setAdapter(adapter);
     }
+    public static void ReloadAdapter()
+    {
+        initializeDataSet();
+    }
+
 
 }

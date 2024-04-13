@@ -19,6 +19,7 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 
 import com.example.gamechats_final.Activities.ChatActivity;
+import com.example.gamechats_final.Fragments.fragment_ChatForYou;
 import com.example.gamechats_final.Fragments.fragment_CreateGroup;
 import com.example.gamechats_final.Fragments.fragment_Setting;
 import com.example.gamechats_final.Object.Chat;
@@ -243,6 +244,7 @@ public class AlertDialogBuilder {
                         Chat chat = new Chat(i_Chat.GetID() , i_Chat.GetChatName());
                         ChatActivity.m_UserInfo.GetChat().add(chat);
                         alertInfoChat.dismiss();
+                        fragment_ChatForYou.ReloadAdapter();
                   //      Toast.makeText(i_Context, "Successful add this Group", Toast.LENGTH_SHORT).show();
                     }
                 });
