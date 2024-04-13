@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_chat"
+    app:startDestination="@id/fragment_ForYou">
+
+    <fragment
+        android:id="@+id/fragment_ForYou"
+        android:name="com.example.gamechats_final.Fragments.fragment_ChatForYou"
+        android:label="fragment__for_you"
+        tools:layout="@layout/fragment_chat_for_you" />
+    <fragment
+        android:id="@+id/fragment_chatgroup"
+        android:name="com.example.gamechats_final.Fragments.fragment_Chat"
+        android:label="fragment_chatgroup"
+        tools:layout="@layout/fragment_chatgroup" />
+    <fragment
+        android:id="@+id/fragment_UserMember"
+        android:name="com.example.gamechats_final.Fragments.fragment_UserMember"
+        android:label="fragment_user_member"
+        tools:layout="@layout/fragment_user_member" />
+</navigation>

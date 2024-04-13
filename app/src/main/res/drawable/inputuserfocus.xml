@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_window_focused="true" android:state_focused="true">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle">
+
+            <solid android:color="@android:color/white" />
+            <padding android:left="10dp" android:top="1dp" android:right="1dp"
+                android:bottom="1dp"/>
+            <stroke
+                android:width="2dp"
+                android:color="@android:color/black" />
+            <gradient
+                android:startColor="@color/grayOpacity_2"
+                android:endColor="@color/grayOpacity_2"/>
+
+            <corners android:bottomLeftRadius="15dp"
+                android:topLeftRadius="15dp"
+                android:bottomRightRadius="15dp"
+                android:topRightRadius="15dp" />
+        </shape>
+    </item>>
+
+    <item android:state_window_focused="false" android:state_focused="false">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle">
+
+            <solid android:color="@android:color/white" />
+            <padding android:left="10dp" android:top="1dp" android:right="1dp"
+            android:bottom="1dp"/>
+            <stroke
+            android:width="2dp"
+            android:color="@android:color/white" />
+        <gradient
+            android:startColor="@color/grayOpacity_1"
+            android:endColor="@color/grayOpacity_1"/>
+
+        <corners android:bottomLeftRadius="15dp"
+            android:topLeftRadius="15dp"
+            android:bottomRightRadius="15dp"
+            android:topRightRadius="15dp" />
+    </shape>
+    </item>>
+</selector>
+
+
+

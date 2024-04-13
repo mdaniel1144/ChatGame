@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:layout_gravity="left"
+    android:layoutDirection="ltr"
+    android:background="@color/transparent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/transparent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_margin="3dp"
+            app:cardCornerRadius="100dp"
+            android:background="@drawable/cardview_oval">
+
+            <ImageView
+                android:id="@+id/imageViewSenderProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/orange"
+                android:scaleType="fitXY" />
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:orientation="vertical"
+            android:background="@drawable/cardview_rectangle">
+
+            <TextView
+                android:id="@+id/textViewMessageSender"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="SenderName"
+                android:textAlignment="inherit"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewMessageContext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAlignment="inherit"
+                android:textColor="@color/black"
+                android:text="Context" />
+
+            <TextView
+                android:id="@+id/textViewMessageCreatedDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAlignment="textEnd"
+                android:textColor="@color/grayOpacity_1"
+                android:textSize="8sp"
+                android:text="Date" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

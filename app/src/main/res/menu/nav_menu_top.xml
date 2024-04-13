@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_top_advance_search"
+        android:title="@string/menu_top_advance_search" >
+    </item>
+    <item android:id="@+id/menu_top_create_chat"
+        android:icon="@drawable/ic_group"
+        android:title="@string/menu_top_create_chat" />
+    <item android:id="@+id/menu_top_setting"
+        android:title="Setting" />
+</menu>

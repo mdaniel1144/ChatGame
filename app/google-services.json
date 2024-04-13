@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "747360526628",
+    "firebase_url": "https://gamechat-86e7f-default-rtdb.firebaseio.com",
+    "project_id": "gamechat-86e7f",
+    "storage_bucket": "gamechat-86e7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747360526628:android:4f40c7cd23158cd3fad3b1",
+        "android_client_info": {
+          "package_name": "com.example.gamechats_final"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTEYFcMScrGlyv8-w9MW3vpVM0ZDq11HY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

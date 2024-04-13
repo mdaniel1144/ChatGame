@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_setting"
+    app:startDestination="@id/fragment_SettingMenu">
+    <fragment
+        android:id="@+id/fragment_SettingMenu"
+        android:name="com.example.gamechats_final.Fragments.fragment_SettingMenu"
+        android:label="fragment_setting_menu"
+        tools:layout="@layout/fragment_setting_menu" >
+        <action
+            android:id="@+id/action_fragment_SettingMenu_to_fragment_SettingChangePassword"
+            app:destination="@id/fragment_SettingChangePassword" />
+        <action
+            android:id="@+id/action_fragment_SettingMenu_to_fragment_setting_deatils"
+            app:destination="@id/fragment_setting_deatils" />
+        <action
+            android:id="@+id/action_fragment_SettingMenu_to_fragment_SettingUploadImage"
+            app:destination="@id/fragment_SettingUploadImage" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_SettingChangePassword"
+        android:name="com.example.gamechats_final.Fragments.fragment_SettingChangePassword"
+        android:label="fragment_SettingChangePassword" >
+        <action
+            android:id="@+id/action_fragment_SettingChangePassword_to_fragment_SettingMenu"
+            app:destination="@id/fragment_SettingMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_setting_deatils"
+        android:name="com.example.gamechats_final.Fragments.fragment_setting_deatils"
+        android:label="fragment_setting_deatils" >
+        <action
+            android:id="@+id/action_fragment_setting_deatils_to_fragment_SettingMenu"
+            app:destination="@id/fragment_SettingMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_SettingUploadImage"
+        android:name="com.example.gamechats_final.Fragments.fragment_SettingUploadImage"
+        android:label="fragment_setting_uploadimage"
+        tools:layout="@layout/fragment_setting_uploadimage" >
+        <action
+            android:id="@+id/action_fragment_SettingUploadImage_to_fragment_SettingMenu"
+            app:destination="@id/fragment_SettingMenu" />
+    </fragment>
+</navigation>

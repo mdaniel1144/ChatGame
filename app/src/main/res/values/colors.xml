@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="orange">#50FFA500</color>
+    <color name="orangeReal">#FFA500</color>
+    <color name="orangeOpacity">#4dFFA500</color>
+    <color name="blueOpacity">#4d2672de</color>
+    <color name="light_orange">#50ffc761</color>
+    <color name="blue">#2672de</color>
+    <color name="grayOpacity_1">#80000000</color>
+    <color name="grayOpacity_2">#50d3d3d3</color>
+    <color name="grayOpacity_3">#B5d3d3d3</color>
+</resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_login">
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="com.example.gamechats_final.Fragments.fragment_login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_fragment_login_to_fragment_RegisterStepOne"
+            app:destination="@id/fragment_RegisterStepOne" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_RegisterStepOne"
+        android:name="com.example.gamechats_final.Fragments.fragment_RegisterStepOne"
+        android:label="fragment_register_step_one"
+        tools:layout="@layout/fragment_register_step_one" >
+        <action
+            android:id="@+id/action_fragment_RegisterStepOne_to_fragment_RegisterStepTwo"
+            app:destination="@id/fragment_RegisterStepTwo" />
+        <action
+            android:id="@+id/action_fragment_RegisterStepOne_to_fragment_login"
+            app:destination="@id/fragment_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_RegisterStepTwo"
+        android:name="com.example.gamechats_final.Fragments.fragment_RegisterStepTwo"
+        android:label="fragment_register_step_two"
+        tools:layout="@layout/fragment_register_step_two" >
+        <action
+            android:id="@+id/action_fragment_RegisterStepTwo_to_fragment_registerStepThree"
+            app:destination="@id/fragment_registerStepThree" />
+        <action
+            android:id="@+id/action_fragment_RegisterStepTwo_to_fragment_login"
+            app:destination="@id/fragment_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_registerStepThree"
+        android:name="com.example.gamechats_final.Fragments.fragment_registerStepThree"
+        android:label="fragment_register_step_three"
+        tools:layout="@layout/fragment_register_step_three" >
+        <action
+            android:id="@+id/action_fragment_registerStepThree_to_fragment_login"
+            app:destination="@id/fragment_login" />
+    </fragment>
+</navigation>
