@@ -48,26 +48,20 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <RelativeLayout
-                android:layout_width="340dp"
-                android:layout_height="340dp"
-                android:layout_gravity="center">
-
-                <ImageButton
-                    android:id="@+id/imageButtonAddPhoto"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:background="@drawable/button"
-                    android:src="@android:drawable/ic_input_add" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardViewProfile"
                     android:layout_width="300dp"
                     android:layout_height="300dp"
-                    android:layout_centerInParent="true"
-                    app:cardCornerRadius="200dp">
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    app:cardCornerRadius="200dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
                         android:id="@+id/imageViewProfilePhoto"
@@ -76,16 +70,29 @@
                         android:background="@drawable/profile_default" />
 
                 </androidx.cardview.widget.CardView>
-            </RelativeLayout>
 
-            <Button
-                android:id="@+id/buttonRegisterNextStepTwo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:text="@string/registration"
-                android:textColor="@color/black" />
+                <ImageButton
+                    android:id="@+id/imageButtonAddPhoto"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:translationZ="9dp"
+                    android:background="@drawable/button"
+                    android:src="@android:drawable/ic_input_add"
+                    app:layout_constraintBottom_toBottomOf="@+id/cardViewProfile"
+                    app:layout_constraintEnd_toEndOf="@+id/cardViewProfile" />
+
+                <Button
+                    android:id="@+id/buttonRegisterNextStepTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/registration"
+                    android:textColor="@color/black"
+                    tools:layout_editor_absoluteX="88dp"
+                    tools:layout_editor_absoluteY="346dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

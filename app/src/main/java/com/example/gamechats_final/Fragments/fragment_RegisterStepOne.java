@@ -33,7 +33,7 @@ public class fragment_RegisterStepOne extends Fragment {
     private EditText m_UserConfirmPassword;
     private EditText m_UserNickName;
 
-    private Timestamp m_dateInput;
+    private Timestamp m_dateInput =  new Timestamp(0, 0);
     private DatePickerDialog datePickerDialog;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -126,10 +126,8 @@ public class fragment_RegisterStepOne extends Fragment {
             isValid = false;
             m_UserConfirmPassword.setError("It must be same to Password");
         }
-        Calendar dateToday = Calendar.getInstance();
-        Calendar dateInput = Calendar.getInstance();
-        dateInput.set(datePickerDialog.getDatePicker().getYear() , datePickerDialog.getDatePicker().getMonth()+1,datePickerDialog.getDatePicker().getDayOfMonth());
-        if(dateToday.before(dateInput)) {
+
+        if(m_dateInput.compareTo(Timestamp.now()) > 0) {
             isValid = false;
             m_UserBirthDate.setError("It it illegal date");
         }
