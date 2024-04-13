@@ -4,24 +4,19 @@ import static android.content.ContentValues.TAG;
 
 import android.content.Context;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
-import androidx.navigation.Navigation;
 
 import com.example.gamechats_final.Activities.ChatActivity;
 import com.example.gamechats_final.Fragments.fragment_CreateGroup;
@@ -221,7 +216,7 @@ public class AlertDialogBuilder {
         GetImageChat(imageProfile , i_Chat.GetImageSrc());
 
         //For offLine Action
-        ImageButton addAction =  (ImageButton)view.findViewById(R.id.imageButtonCardInfoAddGroup);
+        ImageButton addAction =  (ImageButton)view.findViewById(R.id.imageButtonRegisterCancelStepOne);
         TextView textFollower = (TextView)view.findViewById(R.id.textViewCardInfoFollowers);
 
         if(IsUserMemberInThisGroup(i_Chat.GetID()) == true)

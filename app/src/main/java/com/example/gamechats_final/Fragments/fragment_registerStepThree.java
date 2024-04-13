@@ -52,6 +52,10 @@ public class fragment_registerStepThree extends Fragment {
         addPhoto.setOnClickListener(v->{
             AddProfileImage();
         });
+        view.findViewById(R.id.imageButtonRegisterCancelStepThree).setOnClickListener(v->{
+            Navigation.findNavController(v).navigate(R.id.action_fragment_registerStepThree_to_fragment_login);
+        });
+
         return  view;
     }
 

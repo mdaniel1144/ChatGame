@@ -1,40 +1,32 @@
 package com.example.gamechats_final.Fragments;
 
-import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 
+import android.app.AlertDialog;
+import android.widget.TextView;
+
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.gamechats_final.Activities.MainActivityMain;
-import com.example.gamechats_final.Interface.InitializeDataSet;
+import com.example.gamechats_final.Interface.AlertDialogBuilder;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskCompletionSource;
-import com.google.android.gms.tasks.Tasks;
+
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+
 
 public class fragment_RegisterStepTwo extends Fragment {
 
@@ -50,10 +42,26 @@ public class fragment_RegisterStepTwo extends Fragment {
 
         Button registerActivity = view.findViewById(R.id.buttonRegisterNextStepTwo);
         registerActivity.setOnClickListener(v->{
-            AddChoiceToUser();
-            Navigation.findNavController(v).navigate(R.id.action_fragment_RegisterStepTwo_to_fragment_registerStepThree);
+                AddChoiceToUser();
+                if(Valid())
+                    Navigation.findNavController(v).navigate(R.id.action_fragment_RegisterStepTwo_to_fragment_registerStepThree);
+                else
+                {
+                AlertDialog dialog = AlertDialogBuilder.builderAlertBuildPrivicyChat(getContext(), "At least one tags","OK" );
+                dialog.show();
+                ((TextView)dialog.getWindow().getDecorView().findViewById(R.id.buttonBuildPrivicyCancel)).setVisibility(View.GONE);
+                dialog.getWindow().getDecorView().findViewById(R.id.buttonBuildPrivicyOk).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+             }
         });
 
+        view.findViewById(R.id.imageButtonRegisterCancelStepTwo).setOnClickListener(v->{
+            Navigation.findNavController(v).navigate(R.id.action_fragment_RegisterStepTwo_to_fragment_login);
+        });
 
         AddChipToGroup(view);
         return view;
@@ -127,6 +135,16 @@ public class fragment_RegisterStepTwo extends Fragment {
         }
         newUser.put("PlatformGame" , PlatformGame);
         newUser.put("Category" , Category);
+    }
+
+    private boolean Valid()
+    {
+        boolean isValid = true;
+        HashMap<String , Object> newUser = ((MainActivityMain)getActivity()).GetUserProperty();
+        ArrayList<Tag> tags = new ArrayList<>((ArrayList<Tag>)newUser.get("Category"));
+        tags.addAll((ArrayList<Tag>)newUser.get("PlatformGame"));
+
+        return tags.size() >= 1;
     }
 }
 

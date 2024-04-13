@@ -19,6 +19,7 @@ import com.example.gamechats_final.R;
 import com.google.firebase.Timestamp;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
@@ -32,6 +33,7 @@ public class fragment_RegisterStepOne extends Fragment {
     private EditText m_UserConfirmPassword;
     private EditText m_UserNickName;
 
+    private Timestamp m_dateInput;
     private DatePickerDialog datePickerDialog;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,6 +49,10 @@ public class fragment_RegisterStepOne extends Fragment {
         m_UserConfirmPassword = view.findViewById(R.id.editTextConfrimPassword);
         m_UserNickName =  view.findViewById(R.id.editTextUserNickName);
         initDatePicker();
+
+        view.findViewById(R.id.imageButtonRegisterCancelStepOne).setOnClickListener(v->{
+            Navigation.findNavController(v).navigate(R.id.action_fragment_RegisterStepOne_to_fragment_login);
+        });
 
         view.findViewById(R.id.buttonRegisterNextStepTwo).setOnClickListener(this::OnClickNext);
         m_UserBirthDate.setOnClickListener(this::openDatePicker);
@@ -66,16 +72,17 @@ public class fragment_RegisterStepOne extends Fragment {
             newUser.put("LastName", m_UserLastname.getText().toString().trim());
             newUser.put("NickName", m_UserNickName.getText().toString().trim());
             newUser.put("Phone", m_UserPhone.getText().toString().trim());
-            newUser.put("BirthDate", m_UserBirthDate.getText().toString().trim());
+            newUser.put("BirthDate", m_dateInput);
             newUser.put("Email", m_UserEmail.getText().toString().trim());
             newUser.put("Password", m_UserPassword.getText().toString().trim());
-           //  newUser.put("FirstName", "ido");
-          //  newUser.put("LastName", "Yossi");
-        ///    newUser.put("NickName", "Yossi");
+         //   Timestamp date = Timestamp.now();
+        //    newUser.put("FirstName", "ido");
+        //    newUser.put("LastName", "Yossi");
+        //    newUser.put("NickName", "Yossi");
         //    newUser.put("Phone", "0508422256");
         //    newUser.put("BirthDate", Timestamp.now());
         //    newUser.put("Email", "wa@n-k.org.il");
-        //    newUser.put("Password", "12345678");
+           // newUser.put("Password", "12345678");
             Navigation.findNavController(view).navigate(R.id.action_fragment_RegisterStepOne_to_fragment_RegisterStepTwo);
         }
     }
@@ -135,6 +142,8 @@ public class fragment_RegisterStepOne extends Fragment {
         DatePickerDialog.OnDateSetListener dateListener =  new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                Date date = new Date(year ,month ,dayOfMonth);
+                m_dateInput = new Timestamp(date);
                 String dataBirthDate = String.format("%s-%s-%s",dayOfMonth, month+1,year);
                 m_UserBirthDate.setText(dataBirthDate);
             }
@@ -144,7 +153,7 @@ public class fragment_RegisterStepOne extends Fragment {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        int style = AlertDialog.THEME_HOLO_DARK;
+        int style = AlertDialog.THEME_DEVICE_DEFAULT_DARK;
 
         datePickerDialog = new DatePickerDialog(getContext(), style, dateListener, year, month, day);
     }

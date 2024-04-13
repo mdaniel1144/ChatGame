@@ -1,137 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.fragment_RegisterStepOne">
 
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="408dp"
-        android:layout_gravity="center"
-        android:background="@drawable/background_registration"
-        android:orientation="vertical"
-        android:padding="10dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textViewRegistrationDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="300dp"
+            android:layout_height="408dp"
             android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/registrationDetails"/>
+            android:background="@drawable/background_registration"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textViewRegistrationDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/registrationDetails"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
 
-        <EditText
-            android:id="@+id/editTextUserFirstName"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/inputuserfocus"
-            android:ems="10"
-            android:hint="@string/first_name"
-            android:inputType="text" />
+            <EditText
+                android:id="@+id/editTextUserFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/inputuserfocus"
+                android:ems="20"
+                android:hint="@string/first_name"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/editTextUserLastName"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/inputuserfocus"
-            android:ems="10"
-            android:hint="@string/last_name"
-            android:inputType="text" />
+            <EditText
+                android:id="@+id/editTextUserLastName"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/inputuserfocus"
+                android:ems="10"
+                android:hint="@string/last_name"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/editTextUserNickName"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/inputuserfocus"
-            android:ems="10"
-            android:hint="Nick Name"
-            android:inputType="text"
-            android:textDirection="ltr" />
+            <EditText
+                android:id="@+id/editTextUserNickName"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/inputuserfocus"
+                android:ems="10"
+                android:hint="Nick Name"
+                android:inputType="text"
+                android:textDirection="ltr" />
 
-        <EditText
-            android:id="@+id/editTextUserPhone"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/inputuserfocus"
-            android:ems="10"
-            android:hint="@string/user_phone"
-            android:inputType="numberDecimal"
-            android:textDirection="ltr" />
+            <EditText
+                android:id="@+id/editTextUserPhone"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/inputuserfocus"
+                android:ems="10"
+                android:hint="@string/user_phone"
+                android:inputType="numberDecimal"
+                android:textDirection="ltr" />
 
-        <EditText
-            android:id="@+id/editTextUserMail"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/inputuserfocus"
-            android:ems="10"
-            android:hint="@string/mail_user"
-            android:inputType="text" />
+            <EditText
+                android:id="@+id/editTextUserMail"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/inputuserfocus"
+                android:ems="10"
+                android:hint="@string/mail_user"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/editTextUserBirthDate"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/inputuserfocus"
-            android:clickable="true"
-            android:focusable="false"
-            android:hint="@string/birthDate_user"
-            android:textColor="@color/black" />
-
-
-        <EditText
-            android:id="@+id/editTextTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/inputuserfocus"
-            android:ems="10"
-            android:hint="@string/Password"
-            android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/editTextUserBirthDate"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/inputuserfocus"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="@string/birthDate_user"
+                android:textColor="@color/black" />
 
 
-        <EditText
-            android:id="@+id/editTextConfrimPassword"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginBottom="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/inputuserfocus"
-            android:ems="10"
-            android:hint="@string/confirm_password"
-            android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/editTextTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/inputuserfocus"
+                android:ems="10"
+                android:hint="@string/Password"
+                android:inputType="textPassword" />
 
-        <Button
-            android:id="@+id/buttonRegisterNextStepTwo"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="4dp"
-            android:background="@drawable/button"
-            android:gravity="center"
-            android:text="@string/registrationNext"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/editTextConfrimPassword"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/inputuserfocus"
+                android:ems="10"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/buttonRegisterNextStepTwo"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/button"
+                android:gravity="center"
+                android:text="@string/registrationNext"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imageButtonRegisterCancelStepOne"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom|right"
+            android:translationZ="9dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/cardview_oval"
+            android:src="@drawable/ic_close"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
