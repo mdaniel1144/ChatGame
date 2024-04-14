@@ -2,100 +2,76 @@ package com.example.gamechats_final.Object;
 
 import java.util.ArrayList;
 
-public class User {
+public class User extends Friend {
 
-    private String m_UserID;
     private String m_UserMail;
     private String m_UserLastName;
-    private String m_NickName;
     private String m_UserFirstName;
     private String m_Password;
     private String m_Phone;
-    private String m_ImageSrc;
-    protected ArrayList<Tag> m_CategoryTags;
-    protected ArrayList<Tag> m_PlatformGameTags;
+    private String m_Gender;
     protected ArrayList<User> m_Friend;
-
     protected ArrayList<Chat> m_Chat;
 
-    public User(){
-        this.m_UserID = "";
+    public User()
+    {
+        super( "" , "" , "", new ArrayList<>()  , new ArrayList<>() );
         this.m_UserLastName = "";
         this.m_UserFirstName = "";
         this.m_UserMail = "";
         this.m_Password = "";
         this.m_Phone = "";
-        this.m_ImageSrc = "";
-        this.m_NickName = "";
-        this.m_CategoryTags = new ArrayList<>() ;
-        this.m_PlatformGameTags = new ArrayList<>() ;
+        this.m_Friend =  new ArrayList<>() ;;
+        this.m_Chat =  new ArrayList<>() ;;
+    }
+
+
+    public User(String i_ID ,String i_Nickname ,String i_ImageSrc,ArrayList<Tag> i_CategoryTag ,ArrayList<Tag> i_PlatformTag){
+        super( i_ID , i_Nickname , i_ImageSrc, i_CategoryTag , i_PlatformTag);
+        this.m_UserLastName = "";
+        this.m_UserFirstName = "";
+        this.m_UserMail = "";
+        this.m_Password = "";
+        this.m_Phone = "";
         this.m_Friend = new ArrayList<>() ;
         this.m_Chat = new ArrayList<>() ;
     }
 
-    public User(String i_UserID, String i_FirstName , String i_LastName, String i_NickName ,String i_Phone , String i_Mail , String i_Password , String i_ImageSrc , ArrayList<Tag> i_CategoryTags , ArrayList<Tag> i_PlatformGameTags , ArrayList<Chat> i_Chat ,ArrayList<User> i_Friend)
+    public User(String i_ID, String i_FirstName , String i_LastName, String i_NickName ,String i_Phone , String i_Mail , String i_Password , String i_ImageSrc , ArrayList<Tag> i_CategoryTag , ArrayList<Tag> i_PlatformGameTag , ArrayList<Chat> i_Chat ,ArrayList<User> i_Friend)
     {
+        super( i_ID , i_NickName , i_ImageSrc, i_CategoryTag , i_PlatformGameTag);
         //For Register
-        this.m_UserID = i_UserID;
         this.m_UserLastName = i_LastName;
         this.m_UserFirstName = i_FirstName;
         this.m_UserMail = i_Mail;
         this.m_Password = i_Password;
         this.m_Phone = i_Phone;
-        this.m_ImageSrc = i_ImageSrc;
-        this.m_NickName = i_NickName;
-        this.m_CategoryTags = i_CategoryTags;
-        this.m_PlatformGameTags = i_PlatformGameTags;
         this.m_Friend = i_Friend;
         this.m_Chat = i_Chat;
     }
 
-    public User(String i_UserID , String i_NickName ,String i_ImageSrc , ArrayList<Tag> i_CategoryTags , ArrayList<Tag> i_PlatformGameTags)
+    public User(String i_ID , String i_NickName ,String i_ImageSrc , String i_Phone)
     {
-        //For UserMember
-        this.m_UserID = i_UserID;
-        this.m_UserLastName = null;
-        this.m_UserFirstName = null;
-        this.m_UserMail = null;
-        this.m_Password = null;
-        this.m_Phone = null;
-        this.m_ImageSrc = i_ImageSrc;
-        this.m_NickName = i_NickName;
-        this.m_CategoryTags = i_CategoryTags;
-        this.m_PlatformGameTags = i_PlatformGameTags;
-        this.m_Friend =  new ArrayList<>() ;
-        this.m_Chat = new ArrayList<>() ;
-    }
-    public User(String i_UserID , String i_NickName ,String i_ImageSrc , String i_Phone)
-    {
+        super( i_ID , i_NickName , i_ImageSrc, new ArrayList<>() , new ArrayList<>());
         //For CreateGroup
-        this.m_UserID = i_UserID;
         this.m_UserLastName = "";
         this.m_UserFirstName = "";
         this.m_UserMail = "";
         this.m_Password = "";
         this.m_Phone = i_Phone;
-        this.m_ImageSrc = i_ImageSrc;
-        this.m_NickName = i_NickName;
-        this.m_CategoryTags =  new ArrayList<>() ;
-        this.m_PlatformGameTags =  new ArrayList<>() ;
         this.m_Friend =  new ArrayList<>();
         this.m_Chat = new ArrayList<>() ;
     }
 
-    public User(String firstname ,String lastname ,String nickname ,String  phone ,ArrayList<Tag> categoryTag ,ArrayList<Tag> platformTag)
+    public User(String firstname ,String lastname ,String i_NickName ,String  phone ,ArrayList<Tag> i_CategoryTag ,ArrayList<Tag> i_PlatformGameTag)
     {
+        super( "" , i_NickName , "",i_CategoryTag , i_PlatformGameTag);
         //For UpdateProfile
-        this.m_UserID = "";
         this.m_UserLastName = lastname;
         this.m_UserFirstName = firstname;
         this.m_UserMail = "";
         this.m_Password = "";
         this.m_Phone = phone;
-        this.m_ImageSrc = "";
-        this.m_NickName = nickname;
-        this.m_CategoryTags = categoryTag;
-        this.m_PlatformGameTags = platformTag;
         this.m_Friend =  new ArrayList<>() ;
         this.m_Chat = new ArrayList<>() ;
     }
@@ -104,17 +80,12 @@ public class User {
 
     public User(String i_UserID , String i_ImageSrc)
     {
+        super( i_UserID , "" , i_ImageSrc,new ArrayList<>() , new ArrayList<>());
         //For CreateGroup
         this.m_UserID = i_UserID;
-        this.m_UserLastName = null;
-        this.m_UserFirstName = null;
         this.m_UserMail = null;
         this.m_Password = null;
         this.m_Phone = null;
-        this.m_ImageSrc = i_ImageSrc;
-        this.m_NickName = null;
-        this.m_CategoryTags = new ArrayList<>() ;
-        this.m_PlatformGameTags = new ArrayList<>() ;
         this.m_Friend =  new ArrayList<>() ;
         this.m_Chat = new ArrayList<>() ;
     }
