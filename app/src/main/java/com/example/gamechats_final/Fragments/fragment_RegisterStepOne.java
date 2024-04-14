@@ -33,7 +33,7 @@ public class fragment_RegisterStepOne extends Fragment {
     private EditText m_UserConfirmPassword;
     private EditText m_UserNickName;
 
-    private Timestamp m_dateInput =  new Timestamp(0, 0);
+    private Timestamp m_dateInput;
     private DatePickerDialog datePickerDialog;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,7 +49,7 @@ public class fragment_RegisterStepOne extends Fragment {
         m_UserConfirmPassword = view.findViewById(R.id.editTextConfrimPassword);
         m_UserNickName =  view.findViewById(R.id.editTextUserNickName);
         initDatePicker();
-
+        m_dateInput =  new Timestamp(0, 0);
         view.findViewById(R.id.imageButtonRegisterCancelStepOne).setOnClickListener(v->{
             Navigation.findNavController(v).navigate(R.id.action_fragment_RegisterStepOne_to_fragment_login);
         });
@@ -141,7 +141,9 @@ public class fragment_RegisterStepOne extends Fragment {
         DatePickerDialog.OnDateSetListener dateListener =  new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                Date date = new Date(year ,month ,dayOfMonth);
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month , dayOfMonth);
+                Date date = calendar.getTime();
                 m_dateInput = new Timestamp(date);
                 String dataBirthDate = String.format("%s-%s-%s",dayOfMonth, month+1,year);
                 m_UserBirthDate.setText(dataBirthDate);

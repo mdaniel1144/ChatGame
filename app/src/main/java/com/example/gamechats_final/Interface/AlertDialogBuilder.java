@@ -230,12 +230,16 @@ public class AlertDialogBuilder {
                 String userID = ChatActivity.m_UserInfo.GetUserID();
                 data.put("Name", i_Chat.GetChatName());
 
+                Map<String, Object> dataChat = new HashMap<>();
+                data.put("ImageSrc", ChatActivity.m_UserInfo.GetImageSrc());
+
                 Integer followerNew = new Integer(i_Chat.GetFollowers())+1;
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+                Task<Void> task_UpdateUserAsMemberInChat =  db.collection("ChatGroup").document(i_Chat.GetID()).collection("User").document(userID).update("CountFollower",followerNew);
                 Task<Void> task_UserAddGroup = db.collection("User").document(userID).collection("ChatGroup").document(i_Chat.GetID()).set(data);
                 Task<Void> task_UpdateFollower =  db.collection("ChatGroup").document(i_Chat.GetID()).update("CountFollower",followerNew);
-                Tasks.whenAllComplete(task_UserAddGroup , task_UpdateFollower).addOnSuccessListener(new OnSuccessListener<List<Task<?>>>() {
+                Tasks.whenAllComplete(task_UserAddGroup , task_UpdateFollower , task_UpdateUserAsMemberInChat).addOnSuccessListener(new OnSuccessListener<List<Task<?>>>() {
                     @Override
                     public void onSuccess(List<Task<?>> tasks) {
                         Log.d(TAG, "Join to New Group successfully written!");

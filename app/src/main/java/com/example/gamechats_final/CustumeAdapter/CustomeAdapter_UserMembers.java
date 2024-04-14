@@ -22,6 +22,7 @@ import com.example.gamechats_final.Fragments.fragment_UserMember;
 import com.example.gamechats_final.Interface.AlertDialogBuilder;
 import com.example.gamechats_final.Interface.CreateObj;
 import com.example.gamechats_final.Interface.Update;
+import com.example.gamechats_final.Object.Chat;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.Object.User;
 import com.example.gamechats_final.R;

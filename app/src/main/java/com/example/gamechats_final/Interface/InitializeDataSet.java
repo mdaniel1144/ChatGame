@@ -278,6 +278,7 @@ public class InitializeDataSet {
                             String image = document.getString("ImageSrc");
                             String name = document.getString("NameGroup");
                             String description = document.getString("Description");
+                            //String type = document.getString("Type");
                             ArrayList<Tag> tags = taskTags.getResult();
                             chat = new Chat(date, image, followers,name ,  description , i_ChatID , tags , null ,null);
                             taskCompletionSource.setResult(chat);

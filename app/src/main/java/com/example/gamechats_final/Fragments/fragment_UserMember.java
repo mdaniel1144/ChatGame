@@ -118,9 +118,9 @@ public class fragment_UserMember extends Fragment {
     }
 
    // public static void ReloadAdapter()
-    {
-        initializeDataSet();
-    }
+    // {
+      //  initializeDataSet();
+     //   . }
 
     private void makeSearch()
     {

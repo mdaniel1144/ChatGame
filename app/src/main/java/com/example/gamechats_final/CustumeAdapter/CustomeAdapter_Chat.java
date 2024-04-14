@@ -90,10 +90,6 @@ public class CustomeAdapter_Chat extends RecyclerView.Adapter<CustomeAdapter_Cha
                     dialog.getWindow().getDecorView().findViewById(R.id.buttonBuildPrivicyOk).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            //Delete Chat --> Chat ONLY
-                            dialog.getWindow().getDecorView().findViewById(R.id.buttonBuildPrivicyOk).setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
                                     //Add Chat --> Chat ONLY
                                     String idChat = myViewHolder.GetChat().GetID();
                                     Update.DeleteChat(myViewHolder.GetChat());
@@ -102,18 +98,17 @@ public class CustomeAdapter_Chat extends RecyclerView.Adapter<CustomeAdapter_Cha
                                  //   fragment_ChatForYou.ReloadAdapter();
                                 }
                             });
-                            dialog.getWindow().getDecorView().findViewById(R.id.buttonBuildPrivicyCancel).setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    dialog.dismiss();
-                                }
-                            });
+                    dialog.getWindow().getDecorView().findViewById(R.id.buttonBuildPrivicyCancel).setOnClickListener(new View.OnClickListener() {
+                       @Override
+                        public void onClick(View v) {
+                             dialog.dismiss();
                         }
                     });
-                return false;
-            }});
+                    return false;
+                }});
         return myViewHolder;
     }
+
 
 
     @Override
@@ -121,7 +116,12 @@ public class CustomeAdapter_Chat extends RecyclerView.Adapter<CustomeAdapter_Cha
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        String path = "ChatGroup/"+dataSetChat.get(key).GetImageSrc();
+        String path;
+        if(!dataSetChat.get(key).GetType().equals("Privacy"))
+             path = "ChatGroup/"+dataSetChat.get(key).GetImageSrc();
+        else {
+             path = "User/"+dataSetChat.get(key).GetImageSrc();
+        }
         StorageReference islandRef = storageRef.child(path);
 
         final long ONE_MEGABYTE = 1024 * 1024;

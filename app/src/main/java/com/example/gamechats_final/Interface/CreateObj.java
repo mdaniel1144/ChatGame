@@ -108,8 +108,10 @@ public class CreateObj {
             @Override
                public void onComplete(@NonNull Task<AuthResult> task) {
                    if (task.isSuccessful()) {
+                       String nameImage = task.getResult().getUser().getUid()+".jpg";
+                       i_User.put("ImageSrc" ,nameImage );
                        UpdateProfileUser(task.getResult().getUser().getUid() , i_User);
-                       Storage.UploadImage("User" , task.getResult().getUser().getUid()+".jpg" , Image);
+                       Storage.UploadImage("User" , nameImage , Image);
                        Log.d(TAG, "createUserWithEmail:success");
                        taskCompletionSource.setResult(true);
                   } else {

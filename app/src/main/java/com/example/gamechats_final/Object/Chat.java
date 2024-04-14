@@ -23,7 +23,7 @@ public class Chat extends ChatForYou {
     }
 
     public Chat(Timestamp i_DateCreated , String i_ImageSrc , String i_NameChat , String i_Id , String i_Type){
-        super(i_DateCreated , "" , 0 , i_NameChat ,"" , i_Id , new ArrayList<Tag>());
+        super(i_DateCreated , i_ImageSrc , 0 , i_NameChat ,"" , i_Id , new ArrayList<Tag>());
         m_Users = new Bundle();
         m_Message = new ArrayList<>();
         m_Type = i_Type;

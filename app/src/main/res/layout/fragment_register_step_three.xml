@@ -89,7 +89,8 @@
                     android:layout_gravity="center"
                     android:text="@string/registration"
                     android:textColor="@color/black"
-                    tools:layout_editor_absoluteX="88dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     tools:layout_editor_absoluteY="346dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
