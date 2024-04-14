@@ -23,6 +23,7 @@ import androidx.navigation.Navigation;
 import com.example.gamechats_final.Interface.InitializeDataSet;
 import com.example.gamechats_final.Interface.AlertDialogBuilder;
 import com.example.gamechats_final.Object.Enums;
+import com.example.gamechats_final.Object.Friend;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.Object.User;
 import com.example.gamechats_final.R;
@@ -115,7 +116,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     public String GetUserID() {return m_UserInfo.GetUserID();}
-    public ArrayList<User> GetFriend() {return m_UserInfo.GetFriend();}
+    public ArrayList<Friend> GetFriend() {return m_UserInfo.GetFriend();}
 
     public ArrayList<Tag> GetPlatformGameData(){return this.m_Category;}
     public ArrayList<Tag> GetCategoryData(){return this.m_PlatformGame;}
@@ -123,9 +124,9 @@ public class ChatActivity extends AppCompatActivity {
 
     public static void SetAllFriend()
     {
-        InitializeDataSet.GetUserFriend().addOnCompleteListener(new OnCompleteListener<ArrayList<User>>() {
+        InitializeDataSet.GetUserFriend().addOnCompleteListener(new OnCompleteListener<ArrayList<Friend>>() {
             @Override
-            public void onComplete(@NonNull Task<ArrayList<User>> task) {
+            public void onComplete(@NonNull Task<ArrayList<Friend>> task) {
                 if(task.isSuccessful())
                     m_UserInfo.SetFriend(task.getResult());
             }

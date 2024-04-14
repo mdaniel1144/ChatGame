@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gamechats_final.Fragments.fragment_CreateMenu;
+import com.example.gamechats_final.Object.Friend;
 import com.example.gamechats_final.Object.User;
 import com.example.gamechats_final.R;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,10 +25,10 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 
 public class CustomeAdapter_Friend  extends RecyclerView.Adapter<CustomeAdapter_Friend.MyViewHolder>{
-    private ArrayList<User> dataSetUserMembers;
-    private ArrayList<User> dataSetFriendSelected;
+    private ArrayList<Friend> dataSetUserMembers;
+    private ArrayList<Friend> dataSetFriendSelected;
 
-    public CustomeAdapter_Friend(ArrayList<User> i_DataSet , ArrayList<User> i_FriendSelected) {
+    public CustomeAdapter_Friend(ArrayList<Friend> i_DataSet , ArrayList<Friend> i_FriendSelected) {
         this.dataSetUserMembers = i_DataSet;
         this.dataSetFriendSelected = i_FriendSelected;
     }
@@ -37,7 +38,7 @@ public class CustomeAdapter_Friend  extends RecyclerView.Adapter<CustomeAdapter_
         public ImageView imageViewUserSrc;
         public TextView textViewCreateChatPhone;
         public CheckBox checkBoxFriend;
-        private User m_User;
+        private Friend m_User;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -47,8 +48,8 @@ public class CustomeAdapter_Friend  extends RecyclerView.Adapter<CustomeAdapter_
             this.checkBoxFriend = itemView.findViewById(R.id.checkBoxFriend);
         }
 
-        public User GetUser() {return this.m_User;};
-        public void SetUser(User i_User){this.m_User = i_User;}
+        public Friend GetUser() {return this.m_User;};
+        public void SetUser(Friend i_User){this.m_User = i_User;}
 
     }
 
@@ -79,7 +80,7 @@ public class CustomeAdapter_Friend  extends RecyclerView.Adapter<CustomeAdapter_
     public void onBindViewHolder(@NonNull CustomeAdapter_Friend.MyViewHolder holder, int key) {
 
         holder.textViewUserName.setText(dataSetUserMembers.get(key).GetNickName());
-        holder.textViewCreateChatPhone.setText(dataSetUserMembers.get(key).GetPhone());
+        //holder.textViewCreateChatPhone.setText(dataSetUserMembers.get(key).GetPhone());
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
@@ -97,7 +98,7 @@ public class CustomeAdapter_Friend  extends RecyclerView.Adapter<CustomeAdapter_
         });
 
         holder.SetUser(dataSetUserMembers.get(key));
-        for(User friend : dataSetFriendSelected)
+        for(Friend friend : dataSetFriendSelected)
         {
             if(friend.GetUserID().equals(dataSetUserMembers.get(key).GetUserID()))
             {

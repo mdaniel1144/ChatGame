@@ -10,7 +10,7 @@ public class User extends Friend {
     private String m_Password;
     private String m_Phone;
     private String m_Gender;
-    protected ArrayList<User> m_Friend;
+    protected ArrayList<Friend> m_Friend;
     protected ArrayList<Chat> m_Chat;
 
     public User()
@@ -37,7 +37,7 @@ public class User extends Friend {
         this.m_Chat = new ArrayList<>() ;
     }
 
-    public User(String i_ID, String i_FirstName , String i_LastName, String i_NickName ,String i_Phone , String i_Mail , String i_Password , String i_ImageSrc , ArrayList<Tag> i_CategoryTag , ArrayList<Tag> i_PlatformGameTag , ArrayList<Chat> i_Chat ,ArrayList<User> i_Friend)
+    public User(String i_ID, String i_FirstName , String i_LastName, String i_NickName ,String i_Phone , String i_Mail , String i_Password , String i_ImageSrc , ArrayList<Tag> i_CategoryTag , ArrayList<Tag> i_PlatformGameTag , ArrayList<Chat> i_Chat ,ArrayList<Friend> i_Friend)
     {
         super( i_ID , i_NickName , i_ImageSrc, i_CategoryTag , i_PlatformGameTag);
         //For Register
@@ -106,8 +106,8 @@ public class User extends Friend {
         tags.addAll(m_PlatformGameTags);
         tags.addAll(m_CategoryTags);
         return tags;}
-    public ArrayList<User> GetFriend(){return this.m_Friend;}
-    public void SetFriend(ArrayList<User> i_Friend){this.m_Friend = i_Friend;}
+    public ArrayList<Friend> GetFriend(){return this.m_Friend;}
+    public void SetFriend(ArrayList<Friend> i_Friend){this.m_Friend = i_Friend;}
     public String GetLastName(){ return this.m_UserLastName;}
     public String GetPhone(){ return this.m_Phone;}
 

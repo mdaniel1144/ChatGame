@@ -17,6 +17,7 @@ import com.example.gamechats_final.CustumeAdapter.CustomeAdapter_UserMembers;
 import com.example.gamechats_final.Interface.InitializeDataSet;
 import com.example.gamechats_final.Object.ChatForYou;
 import com.example.gamechats_final.Object.Enums;
+import com.example.gamechats_final.Object.Friend;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.Object.User;
 import com.example.gamechats_final.R;
@@ -59,11 +60,11 @@ public class fragment_UserMember extends Fragment {
                 if(checkedId == R.id.radioButtonFriend)
                 {
                     boolean isMatch = false;
-                    ArrayList<User> friend = ChatActivity.m_UserInfo.GetFriend();
+                    ArrayList<Friend> friend = ChatActivity.m_UserInfo.GetFriend();
                     makeSearch();
                     if(!friend.isEmpty()) {
                         for (int i = 0; i < m_UserMemberDataSearch.size(); i++){
-                            for (User freind : friend) {
+                            for (Friend freind : friend) {
                                 if (m_UserMemberDataSearch.get(i).GetUserID().equals(freind.GetUserID())) {
                                     isMatch = true;
                                     break;

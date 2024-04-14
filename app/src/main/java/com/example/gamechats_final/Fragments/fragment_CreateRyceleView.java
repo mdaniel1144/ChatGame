@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gamechats_final.CustumeAdapter.CustomeAdapter_Friend;
 import com.example.gamechats_final.CustumeAdapter.CustomeAdpter_Tags;
+import com.example.gamechats_final.Object.Friend;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.Object.User;
 import com.example.gamechats_final.R;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class fragment_CreateRyceleView extends Fragment {
-    private ArrayList<User> m_friend = fragment_CreateMenu.m_friend;
+    private ArrayList<Friend> m_friend = fragment_CreateMenu.m_friend;
     private ArrayList<Tag> m_Category= fragment_CreateMenu.m_Category;
     private ArrayList<Tag> m_PlatformGame= fragment_CreateMenu.m_PlatformGame;
 
@@ -53,7 +54,7 @@ public class fragment_CreateRyceleView extends Fragment {
         ((TextView)view.findViewById(R.id.textViewCreateName)).setText("Choose "+JumpToPage.getString("Page"));
         if(!JumpToPage.getString("Page").isEmpty()) {
             if (JumpToPage.getString("Page") == "Friend") {
-                adapterFriend = new CustomeAdapter_Friend(m_friend ,(ArrayList<User>)fragment_CreateMenu.GetInfoCreateGroupCopy().get("Friend"));
+                adapterFriend = new CustomeAdapter_Friend(m_friend ,(ArrayList<Friend>)fragment_CreateMenu.GetInfoCreateGroupCopy().get("Friend"));
                 recyclerView.setAdapter(adapterFriend);
             }
             if (JumpToPage.getString("Page") == "Category") {

@@ -19,6 +19,15 @@ public class Friend {
         this.m_PlatformGameTags = i_PlatformTag;
     }
 
+    public Friend(String i_ID ,String i_Nickname , String i_ImageSrc)
+    {
+        this.m_UserID = i_ID;
+        this.m_ImageSrc = i_ImageSrc;
+        this.m_NickName = i_Nickname;
+        this.m_CategoryTags = new ArrayList<>();
+        this.m_PlatformGameTags =  new ArrayList<>();
+    }
+
     public String GetUserID(){return this.m_UserID;}
     public String GetNickName(){ return this.m_NickName;}
     public ArrayList<Tag> GetCategoryTags(){return this.m_CategoryTags;}

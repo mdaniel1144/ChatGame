@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 
 import com.example.gamechats_final.Object.Chat;
 import com.example.gamechats_final.Object.ChatForYou;
+import com.example.gamechats_final.Object.Friend;
 import com.example.gamechats_final.Object.Message;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.Object.User;
@@ -94,9 +95,9 @@ public class InitializeDataSet {
 
     }
 
-    public static Task<ArrayList<User>> GetUserFriend() {
-        TaskCompletionSource<ArrayList<User>> taskCompletionSource = new TaskCompletionSource<>();
-        ArrayList<User> i_DataSet = new ArrayList<User>();
+    public static Task<ArrayList<Friend>> GetUserFriend() {
+        TaskCompletionSource<ArrayList<Friend>> taskCompletionSource = new TaskCompletionSource<>();
+        ArrayList<Friend> i_DataSet = new ArrayList<Friend>();
         ArrayList<Task<DocumentSnapshot>> tasks = new ArrayList<>();
 
         m_database.collection("User").document(m_Auth.getUid()).collection("Friend").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -110,8 +111,8 @@ public class InitializeDataSet {
                                 DocumentSnapshot result = task.getResult();
                                 String nickName = result.getString("NickName");
                                 String image = result.getString("ImageSrc");
-                                String phone = result.getString("Phone");
-                                User user = new User(document.getId(), nickName, image , phone);
+                                //String phone = result.getString("Phone");
+                                Friend user = new Friend(document.getId(), nickName, image);
                                 i_DataSet.add(user);
                             }
                         });
@@ -396,7 +397,7 @@ public class InitializeDataSet {
         Task<ArrayList<Tag>>  taskCategory = GetUserCategoryTag(m_Auth.getUid());
         Task<ArrayList<Tag>>  taskPlatformGame = GetUserPlatformGameTag(m_Auth.getUid());
         Task<DocumentSnapshot> task_User =  m_database.collection("User").document(m_Auth.getUid()).get();
-        Task<ArrayList<User>> task_Friend =  GetUserFriend();
+        Task<ArrayList<Friend>> task_Friend =  GetUserFriend();
         Task<ArrayList<Chat>> task_Chat =  GetChatsByCurrentUser();
         Tasks.whenAllComplete(taskCategory ,taskPlatformGame , task_User , task_Friend , task_Chat ).addOnCompleteListener(new OnCompleteListener<List<Task<?>>>() {
                @Override

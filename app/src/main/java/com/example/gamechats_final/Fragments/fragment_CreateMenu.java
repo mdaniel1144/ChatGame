@@ -21,6 +21,7 @@ import androidx.navigation.Navigation;
 
 import com.example.gamechats_final.Interface.CreateObj;
 import com.example.gamechats_final.Interface.InitializeDataSet;
+import com.example.gamechats_final.Object.Friend;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.Object.User;
 import com.example.gamechats_final.R;
@@ -36,7 +37,7 @@ import java.util.regex.Pattern;
 
 public class fragment_CreateMenu extends Fragment {
 
-    public static ArrayList<User> m_friend;
+    public static ArrayList<Friend> m_friend;
     public static ArrayList<Tag> m_Category;
     public static ArrayList<Tag> m_PlatformGame;
     private String m_NameChat;
@@ -82,7 +83,7 @@ public class fragment_CreateMenu extends Fragment {
        // It is Show in the activity too
         Task<ArrayList<Tag>> task_Category = InitializeDataSet.GetAllCategory();
         Task<ArrayList<Tag>> task_PlatformGame = InitializeDataSet.GetAllPlatformGame();
-        Task<ArrayList<User>> task_Friend = InitializeDataSet.GetUserFriend();
+        Task<ArrayList<Friend>> task_Friend = InitializeDataSet.GetUserFriend();
         Tasks.whenAllComplete(task_Category , task_PlatformGame , task_Friend).addOnCompleteListener(new OnCompleteListener<List<Task<?>>>() {
            @Override
             public void onComplete(@NonNull Task<List<Task<?>>> task) {
@@ -201,7 +202,7 @@ public class fragment_CreateMenu extends Fragment {
         return  isValid;
     }
 
-    public static void AddOrRemoveFriendOrTag(User i_User, Tag i_Tag , String i_Type  , boolean action)
+    public static void AddOrRemoveFriendOrTag(Friend i_User, Tag i_Tag , String i_Type  , boolean action)
     {
         if(action) {
             if (i_Type == "Friend")

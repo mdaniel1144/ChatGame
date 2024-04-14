@@ -23,6 +23,7 @@ import com.example.gamechats_final.Interface.AlertDialogBuilder;
 import com.example.gamechats_final.Interface.CreateObj;
 import com.example.gamechats_final.Interface.Update;
 import com.example.gamechats_final.Object.Chat;
+import com.example.gamechats_final.Object.Friend;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.Object.User;
 import com.example.gamechats_final.R;
@@ -37,8 +38,8 @@ import java.util.ArrayList;
 
 public class CustomeAdapter_UserMembers extends RecyclerView.Adapter<CustomeAdapter_UserMembers.MyViewHolder>{
     private ArrayList<User> dataSetUserMembers;
-    private ArrayList<User> m_FriendUser;
-    public CustomeAdapter_UserMembers(ArrayList<User> i_UserMemberDataSet ,ArrayList<User> i_FriendUser ) {
+    private ArrayList<Friend> m_FriendUser;
+    public CustomeAdapter_UserMembers(ArrayList<User> i_UserMemberDataSet ,ArrayList<Friend> i_FriendUser ) {
         this.dataSetUserMembers = i_UserMemberDataSet;
         this.m_FriendUser = i_FriendUser;
     }
@@ -152,7 +153,7 @@ public class CustomeAdapter_UserMembers extends RecyclerView.Adapter<CustomeAdap
 
         holder.imageButtonAddFriend.setTag("Add");
         holder.imageButtonAddFriend.setImageResource(R.drawable.ic_add);
-        for (User idFriendUsers : m_FriendUser) {
+        for (Friend idFriendUsers : m_FriendUser) {
             if(idFriendUsers.GetUserID().equals(dataSetUserMembers.get(key).GetUserID()))
             {
                 holder.imageButtonAddFriend.setTag("Remove");
