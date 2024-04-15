@@ -8,9 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,12 +15,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gamechats_final.CustumeAdapter.CustomeAdapter_ChatMessage;
+import com.example.gamechats_final.CustumeAdapter.CustomAdapter_ChatMessage;
 import com.example.gamechats_final.Interface.AlertDialogBuilder;
 import com.example.gamechats_final.Interface.InitializeDataSet;
 import com.example.gamechats_final.Object.Message;
@@ -50,7 +46,7 @@ public class messageActiviy extends AppCompatActivity {
     private ArrayList<Message> m_ChatMessageData;
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
-    private CustomeAdapter_ChatMessage adapter;
+    private CustomAdapter_ChatMessage adapter;
     private Bundle m_InfoChatGroup;
     private ImageView m_ImageProfileChat;
     private EditText m_MessageContent;
@@ -107,7 +103,7 @@ public class messageActiviy extends AppCompatActivity {
     }
 
     private void setDataSetOnAdapter() {
-        adapter = new CustomeAdapter_ChatMessage(m_ChatMessageData  , ChatActivity.m_UserInfo.GetUserID());
+        adapter = new CustomAdapter_ChatMessage(m_ChatMessageData  , ChatActivity.m_UserInfo.GetUserID());
         recyclerView.setAdapter(adapter);
     }
     private void SetImageChat()

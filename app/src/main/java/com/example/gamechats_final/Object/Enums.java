@@ -15,4 +15,15 @@ public class Enums {
         UserMember,
         Chat
     }
+
+    public enum MessageType {
+
+        Sender(-1),
+        Receive(1),
+        Date(0);
+        public final int type;
+        private MessageType(int type) {
+            this.type = type;
+        }
+    }
 }

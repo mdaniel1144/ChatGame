@@ -2,12 +2,8 @@ package com.example.gamechats_final.CustumeAdapter;
 
 import static android.content.ContentValues.TAG;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,21 +13,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gamechats_final.Activities.ChatActivity;
 import com.example.gamechats_final.Activities.messageActiviy;
 import com.example.gamechats_final.Fragments.fragment_Chat;
-import com.example.gamechats_final.Fragments.fragment_ChatForYou;
 import com.example.gamechats_final.Interface.AlertDialogBuilder;
-import com.example.gamechats_final.Interface.CreateObj;
+import com.example.gamechats_final.Interface.Storage;
 import com.example.gamechats_final.Interface.Update;
 import com.example.gamechats_final.Object.Chat;
 import com.example.gamechats_final.R;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+
 
 import java.util.ArrayList;
 
@@ -44,11 +36,10 @@ public class CustomeAdapter_Chat extends RecyclerView.Adapter<CustomeAdapter_Cha
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView textViewNameChat;
-        public TextView textViewDateChat;
-        public ImageView imageViewChat;
-        public TextView textViewLastMessageChat;
-
+        private TextView textViewNameChat;
+        private TextView textViewDateChat;
+        private ImageView imageViewChat;
+        private TextView textViewLastMessageChat;
         private Chat m_Chat;
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -113,30 +104,17 @@ public class CustomeAdapter_Chat extends RecyclerView.Adapter<CustomeAdapter_Cha
 
     @Override
     public void onBindViewHolder(@NonNull CustomeAdapter_Chat.MyViewHolder holder, int key) {
-
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        String path;
-        if(!dataSetChat.get(key).GetType().equals("Privacy"))
-             path = "ChatGroup/"+dataSetChat.get(key).GetImageSrc();
-        else {
-             path = "User/"+dataSetChat.get(key).GetImageSrc();
-        }
-        StorageReference islandRef = storageRef.child(path);
-
-        final long ONE_MEGABYTE = 1024 * 1024;
-        islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                // Data for "images/island.jpg" is returns, use this as needed
-                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                holder.imageViewChat.setImageBitmap(bmp);
-            }
-        });
+        holder.SetChat(dataSetChat.get(key));
         holder.textViewNameChat.setText(dataSetChat.get(key).GetChatName());
         holder.textViewDateChat.setText(dataSetChat.get(key).GetDate());
         holder.textViewLastMessageChat.setText(dataSetChat.get(key).GetTagsAsString());
-        holder.SetChat(dataSetChat.get(key));
+
+        Storage.GetImageFromStorage("ChatGroup" ,dataSetChat.get(key).GetImageSrc(),holder.imageViewChat);
+        if(!dataSetChat.get(key).GetType().equals("Privacy"))
+            Storage.GetImageFromStorage("ChatGroup" ,dataSetChat.get(key).GetImageSrc(),holder.imageViewChat);
+        else {
+            Storage.GetImageFromStorage("User" ,dataSetChat.get(key).GetImageSrc(),holder.imageViewChat);
+        }
     }
 
     @Override

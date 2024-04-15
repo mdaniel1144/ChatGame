@@ -2,7 +2,7 @@ package com.example.gamechats_final.Object;
 
 import java.util.Calendar;
 import java.util.Date;
-
+import com.example.gamechats_final.Object.Enums.MessageType;
 
 public class Message {
 
@@ -10,22 +10,18 @@ public class Message {
     private String m_SenderId;
     private Date m_Date;
     private String m_Context;
-    private Integer m_TypeSender;
+    private MessageType m_TypeMessage;
     private String m_SenderImageSrc;
 
-    public Message(String i_SenderName , String i_SenderId , Date i_Date, String i_Context , Integer i_TypeSender)
+    public Message(String i_SenderName , String i_SenderId , Date i_Date, String i_Context , MessageType i_TypeMessage)
     {
         this.m_SenderName = i_SenderName;
         this.m_SenderId = i_SenderId;
         this.m_Date = i_Date;
         this.m_Context = i_Context;
-        m_TypeSender = i_TypeSender;
+        m_TypeMessage = i_TypeMessage;
     }
 
-    public static void SetImageFromDataBase()
-    {
-
-    }
     public String GetSenderName() {return this.m_SenderName;}
     public String GetSenderId(){return  this.m_SenderId;}
     public Date GetDateCreated() {return this.m_Date;}
@@ -38,7 +34,7 @@ public class Message {
     public String GetContext() {return this.m_Context;}
     public String GetSenderImageSrc(){return  this.m_SenderImageSrc;}
 
-    public Integer getViewType(){return this.m_TypeSender;}
+    public MessageType GetMessageType(){return this.m_TypeMessage;}
     public  String GetSummary()
     {
         return  this.m_SenderName +": "+m_Context.substring(0,20);

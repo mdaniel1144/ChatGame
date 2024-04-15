@@ -40,28 +40,28 @@ public class Storage {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
 
-        String path = i_Location+"/" + i_ImageSrc;
+        String path = i_Location+"/"+ i_ImageSrc;
         StorageReference mountainImagesRef = m_Storage.getReference().child(path);
         UploadTask uploadTask = mountainImagesRef.putBytes(data);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                Log.d(TAG , "Failed Upload Image Profile");
+                Log.d(TAG , "Failed Upload Image Profile: "+i_ImageSrc);
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Log.d(TAG , "Success Upload Image Profile");
+                Log.d(TAG , "Success Upload Image Profile: "+ i_ImageSrc);
             }
         });
 
         return taskCompletionSource.getTask();
     }
 
-    public static void GetImageFromStorage(String i_Collection ,String i_ImageSrc , ImageView i_Image) {
+    public static void GetImageFromStorage(String i_Location,String i_ImageSrc , ImageView i_Image) {
 
         StorageReference storageRef = m_Storage.getReference();
-        String path = i_Collection+"/" + i_ImageSrc;
+        String path = i_Location+"/" + i_ImageSrc;
         StorageReference islandRef = storageRef.child(path);
 
         final long ONE_MEGABYTE = 1024 * 1024;

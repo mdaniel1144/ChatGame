@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gamechats_final.Fragments.fragment_CreateMenu;
+import com.example.gamechats_final.Interface.Storage;
 import com.example.gamechats_final.Object.Friend;
 import com.example.gamechats_final.Object.User;
 import com.example.gamechats_final.R;
@@ -82,20 +83,7 @@ public class CustomeAdapter_Friend  extends RecyclerView.Adapter<CustomeAdapter_
         holder.textViewUserName.setText(dataSetUserMembers.get(key).GetNickName());
         //holder.textViewCreateChatPhone.setText(dataSetUserMembers.get(key).GetPhone());
 
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        String path = "User/"+ dataSetUserMembers.get(key).GetImageSrc();
-        StorageReference islandRef = storageRef.child(path);
-
-        final long ONE_MEGABYTE = 1024 * 1024;
-        islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                // Data for "images/island.jpg" is returns, use this as needed
-                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                holder.imageViewUserSrc.setImageBitmap(bmp);
-            }
-        });
+        Storage.GetImageFromStorage("User" ,dataSetUserMembers.get(key).GetImageSrc() ,holder.imageViewUserSrc);
 
         holder.SetUser(dataSetUserMembers.get(key));
         for(Friend friend : dataSetFriendSelected)
@@ -105,6 +93,7 @@ public class CustomeAdapter_Friend  extends RecyclerView.Adapter<CustomeAdapter_
                 holder.checkBoxFriend.setChecked(true);
             }
         }
+
     }
 
 

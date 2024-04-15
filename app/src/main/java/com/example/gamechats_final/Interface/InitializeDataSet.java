@@ -1,25 +1,22 @@
 package com.example.gamechats_final.Interface;
 
 import static android.content.ContentValues.TAG;
-
-
-import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-
 import com.example.gamechats_final.Object.Chat;
-import com.example.gamechats_final.Object.ChatForYou;
+import com.example.gamechats_final.Object.Enums.MessageType;
 import com.example.gamechats_final.Object.Friend;
 import com.example.gamechats_final.Object.Message;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.Object.User;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskCompletionSource;
 import com.google.android.gms.tasks.Tasks;
+import com.google.android.gms.tasks.TaskCompletionSource;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,12 +24,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
 
-import org.checkerframework.checker.units.qual.A;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -185,7 +179,7 @@ public class InitializeDataSet {
                     boolean isnewDay = true;
                     boolean isFirstDate = true;
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        Integer typeSender;
+                        MessageType messageType;
                         String sender = document.getString("SenderName");
                         String senderID = document.getString("SenderID");
                         Date date = document.getDate("DateCreated");
@@ -194,7 +188,7 @@ public class InitializeDataSet {
                             tempDate = date;
                             isFirstDate = false;
                             //It will show the card_date
-                            Message messageNewDate = new Message("" , "" ,date, "" , 2);
+                            Message messageNewDate = new Message("" , "" ,date, "" , MessageType.Date);
                             i_DataSet.add(messageNewDate);
                         }
                         if(tempDate.getDay() != date.getDay())
@@ -203,17 +197,17 @@ public class InitializeDataSet {
                             isnewDay = false;
 
                         if(i_IdCurrentUser.equals(senderID))
-                            typeSender = 0;
+                            messageType = MessageType.Sender;
                         else
-                            typeSender = 1;
+                            messageType = MessageType.Receive;
 
                         if(isnewDay == true)
                         {
                             //It will show the card_date
-                            Message messageNewDate = new Message("" , "" ,date, "" , 2);
+                            Message messageNewDate = new Message("" , "" ,date, "" , MessageType.Date);
                             i_DataSet.add(messageNewDate);
                         }
-                        Message message = new Message(sender , senderID ,date, context , typeSender);
+                        Message message = new Message(sender , senderID ,date, context , messageType);
                         i_DataSet.add(message);
                         tempDate = date;
                     }

@@ -21,6 +21,7 @@ import com.example.gamechats_final.Activities.ChatActivity;
 import com.example.gamechats_final.Fragments.fragment_UserMember;
 import com.example.gamechats_final.Interface.AlertDialogBuilder;
 import com.example.gamechats_final.Interface.CreateObj;
+import com.example.gamechats_final.Interface.Storage;
 import com.example.gamechats_final.Interface.Update;
 import com.example.gamechats_final.Object.Chat;
 import com.example.gamechats_final.Object.Friend;
@@ -49,11 +50,10 @@ public class CustomeAdapter_UserMembers extends RecyclerView.Adapter<CustomeAdap
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView textViewUserName;
-        public ImageView imageViewUserSrc;
-        public TextView textViewTags;
-        public ImageButton imageButtonAddFriend;
-
+        private TextView textViewUserName;
+        private ImageView imageViewUserSrc;
+        private TextView textViewTags;
+        private ImageButton imageButtonAddFriend;
         private User m_User;
 
         public MyViewHolder(View itemView) {
@@ -128,21 +128,11 @@ public class CustomeAdapter_UserMembers extends RecyclerView.Adapter<CustomeAdap
 
     @Override
     public void onBindViewHolder(@NonNull CustomeAdapter_UserMembers.MyViewHolder holder, int key) {
-        holder.textViewUserName.setText(dataSetUserMembers.get(key).GetNickName());
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        String path = "User/"+ dataSetUserMembers.get(key).GetImageSrc();
-        StorageReference islandRef = storageRef.child(path);
 
-        final long ONE_MEGABYTE = 1024 * 1024;
-        islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                // Data for "images/island.jpg" is returns, use this as needed
-                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                holder.imageViewUserSrc.setImageBitmap(bmp);
-            }
-        });
+        holder.SetUser(dataSetUserMembers.get(key));
+        holder.textViewUserName.setText(dataSetUserMembers.get(key).GetNickName());
+
+        Storage.GetImageFromStorage("User" , dataSetUserMembers.get(key).GetImageSrc(),  holder.imageViewUserSrc);
 
         String allTags ="";
         for(Tag tag : dataSetUserMembers.get(key).GetAllTags())
@@ -150,7 +140,6 @@ public class CustomeAdapter_UserMembers extends RecyclerView.Adapter<CustomeAdap
             allTags += tag.GetTagName()+", ";
         }
         holder.textViewTags.setText(allTags);
-
         holder.imageButtonAddFriend.setTag("Add");
         holder.imageButtonAddFriend.setImageResource(R.drawable.ic_add);
         for (Friend idFriendUsers : m_FriendUser) {
@@ -161,11 +150,6 @@ public class CustomeAdapter_UserMembers extends RecyclerView.Adapter<CustomeAdap
                 break;
             }
         }
-        holder.SetUser(dataSetUserMembers.get(key));
-    }
-
-    private void RemoveUserMember()
-    {
 
     }
 
