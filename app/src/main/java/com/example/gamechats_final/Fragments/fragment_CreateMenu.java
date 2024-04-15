@@ -1,13 +1,13 @@
 package com.example.gamechats_final.Fragments;
 
 import static android.content.ContentValues.TAG;
+import android.util.Log;
 import static android.app.Activity.RESULT_OK;
 
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
+
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +21,7 @@ import androidx.navigation.Navigation;
 
 import com.example.gamechats_final.Interface.CreateObj;
 import com.example.gamechats_final.Interface.InitializeDataSet;
+import com.example.gamechats_final.Object.Enums.RecyclerViewType;
 import com.example.gamechats_final.Object.Friend;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.Object.User;
@@ -49,14 +50,14 @@ public class fragment_CreateMenu extends Fragment {
 
     public static HashMap<String , ArrayList<?>> m_InfoCreateGroupCopy;
     public static HashMap<String , ArrayList<?>> m_InfoCreateGroup;
-    private Bundle JumpToPage;
+    private static RecyclerViewType JumpToPage;
     final int SELECT_PICTURE = 200;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view =  inflater.inflate(R.layout.fragment_create_menu, container, false);
-        JumpToPage = new Bundle();
+
         m_friend = new ArrayList<>();
         m_Category = new ArrayList<>();
         m_PlatformGame = new ArrayList<>();
@@ -98,23 +99,23 @@ public class fragment_CreateMenu extends Fragment {
         });
         view.findViewById(R.id.textViewCreateChatPlatformGame).setOnClickListener(v->{
             if(!m_PlatformGame.isEmpty()){
-                JumpToPage.putString("Page", "PlatformGame");
+                JumpToPage = RecyclerViewType.PlatformGameTags;
                 remmberTheInfoUser(v.getRootView());
-                Navigation.findNavController(v).navigate(R.id.action_fragment_CreateMenu_to_fragment_CreateRyceleView ,JumpToPage );}
+                Navigation.findNavController(v).navigate(R.id.action_fragment_CreateMenu_to_fragment_CreateRyceleView );}
         });
 
         view.findViewById(R.id.textViewCreateChatCategory).setOnClickListener(v->{
             if(!m_Category.isEmpty()){
-                JumpToPage.putString("Page", "Category");
+                JumpToPage = RecyclerViewType.CategoryTags;
                 remmberTheInfoUser(v.getRootView());
-                Navigation.findNavController(v).navigate(R.id.action_fragment_CreateMenu_to_fragment_CreateRyceleView,JumpToPage );}
+                Navigation.findNavController(v).navigate(R.id.action_fragment_CreateMenu_to_fragment_CreateRyceleView );}
         });
 
         view.findViewById(R.id.textViewCreateChatFriend).setOnClickListener(v->{
             if(!m_friend.isEmpty()){
-                JumpToPage.putString("Page", "Friend");
+                JumpToPage = RecyclerViewType.Friend;
                 remmberTheInfoUser(v.getRootView());
-                Navigation.findNavController(v).navigate(R.id.action_fragment_CreateMenu_to_fragment_CreateRyceleView,JumpToPage );}
+                Navigation.findNavController(v).navigate(R.id.action_fragment_CreateMenu_to_fragment_CreateRyceleView );}
             else
                 Toast.makeText(getActivity(), "You Have no Friend in Your Friend List", Toast.LENGTH_SHORT).show();
 
@@ -226,6 +227,7 @@ public class fragment_CreateMenu extends Fragment {
         }
     }
 
+    public static RecyclerViewType GetRecyclerViewType(){return JumpToPage;}
     public static  HashMap<String , ArrayList<?>> GetInfoCreateGroupCopy(){return m_InfoCreateGroupCopy;}
     public static void SetInfoCreateGroupCopy( HashMap<String , ArrayList<?>> InfoCreateGroupCopy){m_InfoCreateGroupCopy = InfoCreateGroupCopy;}
     @Override

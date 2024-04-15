@@ -13,11 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.gamechats_final.Activities.ChatActivity;
-import com.example.gamechats_final.Interface.InitializeDataSet;
-import com.example.gamechats_final.Object.Chat;
 import com.example.gamechats_final.Object.ChatForYou;
 import com.example.gamechats_final.CustumeAdapter.CustomAdapter_ChatForYou;
-import com.example.gamechats_final.Object.Enums;
+import com.example.gamechats_final.Object.Enums.MenuOption;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,10 +25,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class fragment_ChatForYou extends Fragment {
 
@@ -51,7 +47,7 @@ public class fragment_ChatForYou extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        ChatActivity.JumpToPage = Enums.FragmentType.ChatForYou;
+        ChatActivity.JumpToPage = MenuOption.ChatForYou;
 
         initializeDataSet();
         return view;

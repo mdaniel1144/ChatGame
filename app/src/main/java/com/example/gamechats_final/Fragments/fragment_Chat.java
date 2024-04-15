@@ -19,7 +19,7 @@ import com.example.gamechats_final.Activities.ChatActivity;
 import com.example.gamechats_final.Interface.InitializeDataSet;
 import com.example.gamechats_final.Object.Chat;
 import com.example.gamechats_final.CustumeAdapter.CustomeAdapter_Chat;
-import com.example.gamechats_final.Object.Enums;
+import com.example.gamechats_final.Object.Enums.MenuOption;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,7 +44,7 @@ public class fragment_Chat extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_chatgroup, container, false);
         //m_UserProperty = ((ChatActivity)getActivity()).GetUserProperty();
-        ChatActivity.JumpToPage = Enums.FragmentType.ChatGroup;
+        ChatActivity.JumpToPage = MenuOption.ChatGroup;
 
         recyclerView =  view.findViewById(R.id.recylcerViewChatGroup);
         layoutManager = new LinearLayoutManager(getContext());

@@ -15,15 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gamechats_final.Activities.ChatActivity;
 import com.example.gamechats_final.CustumeAdapter.CustomeAdapter_UserMembers;
 import com.example.gamechats_final.Interface.InitializeDataSet;
-import com.example.gamechats_final.Object.ChatForYou;
-import com.example.gamechats_final.Object.Enums;
+
+import com.example.gamechats_final.Object.Enums.MenuOption;
 import com.example.gamechats_final.Object.Friend;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.Object.User;
 import com.example.gamechats_final.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 
 import java.util.ArrayList;
 
@@ -44,7 +44,7 @@ public class fragment_UserMember extends Fragment {
 
         View view =  inflater.inflate(R.layout.fragment_user_member, container, false);
 
-        ChatActivity.JumpToPage = Enums.FragmentType.UserMember;
+        ChatActivity.JumpToPage = MenuOption.UserMember;
         radioGroupMenu = view.findViewById(R.id.radioGroupSort);
 
         recyclerView =  view.findViewById(R.id.recylcerViewUserMembers);

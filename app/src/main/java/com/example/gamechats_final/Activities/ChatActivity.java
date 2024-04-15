@@ -22,7 +22,7 @@ import androidx.navigation.Navigation;
 
 import com.example.gamechats_final.Interface.InitializeDataSet;
 import com.example.gamechats_final.Interface.AlertDialogBuilder;
-import com.example.gamechats_final.Object.Enums;
+import com.example.gamechats_final.Object.Enums.MenuOption;
 import com.example.gamechats_final.Object.Friend;
 import com.example.gamechats_final.Object.Tag;
 import com.example.gamechats_final.Object.User;
@@ -43,7 +43,7 @@ public class ChatActivity extends AppCompatActivity {
     private View m_continerView;
     private static ArrayList<Tag> m_Category;
     private static ArrayList<Tag> m_PlatformGame;
-    public static Enums.FragmentType JumpToPage;
+    public static MenuOption JumpToPage;
     public static User m_UserInfo;
     public static Bundle m_Saerch;
     private AlertDialog alertDialogSearch;
@@ -59,7 +59,7 @@ public class ChatActivity extends AppCompatActivity {
         m_continerView = this.findViewById(R.id.fragmentContainerView);
         m_layoutTopActivity = this.findViewById(R.id.layoutTopActivity);
 
-        JumpToPage = Enums.FragmentType.ChatForYou;
+        JumpToPage = MenuOption.ChatForYou;
         m_Category = new ArrayList<Tag>();
         m_PlatformGame = new ArrayList<Tag>();
 
@@ -165,13 +165,13 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onDismiss(DialogInterface dialog) {
                 Log.d(TAG, "Make Refresh Fragment");
-                if (ChatActivity.JumpToPage == Enums.FragmentType.ChatForYou) {
+                if (ChatActivity.JumpToPage == MenuOption.ChatForYou) {
                     Navigation.findNavController(m_continerView).navigate(R.id.fragment_ForYou);
                 }
-                if (ChatActivity.JumpToPage == Enums.FragmentType.ChatGroup) {
+                if (ChatActivity.JumpToPage == MenuOption.ChatGroup) {
                     Navigation.findNavController(m_continerView).navigate(R.id.fragment_chatgroup);
                 }
-                if (ChatActivity.JumpToPage == Enums.FragmentType.UserMember) {
+                if (ChatActivity.JumpToPage == MenuOption.UserMember) {
                     Navigation.findNavController(m_continerView).navigate(R.id.fragment_UserMember);
                 }
             }
